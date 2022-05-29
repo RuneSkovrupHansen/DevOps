@@ -76,6 +76,10 @@ fi
 # which are staged to be commited.
 # The --check option checks for whitespace errors.
 
+# Note that diff only lists the changes made to a file, not the file itself.
+# This sample will only check for new whitespace in changes that are staged
+# and not in files which are already committed.
+
 # https://git-scm.com/docs/git-diff-index
 # https://www.theserverside.com/video/Understand-the-Git-working-tree-status-command-for-easy-DVCS
 
