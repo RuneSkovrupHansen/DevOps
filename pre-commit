@@ -84,7 +84,7 @@ fi
 # https://www.theserverside.com/video/Understand-the-Git-working-tree-status-command-for-easy-DVCS
 
 # If there are whitespace errors, print the offending file names and fail.
-exec git diff-index --check --cached $against --
+# exec git diff-index --check --cached $against --
 
 # The exec command is used multiple times in this sample.
 # The command is a builin command of bash, allows you to
@@ -93,3 +93,9 @@ exec git diff-index --check --cached $against --
 # entierly replaced by the command you specify.
 
 # Can serve as a form of redirection.
+
+changed_files=$(git diff --cached --name-only)
+echo $changed_files
+pylint $changed_files
+ret=$?
+echo $ret
