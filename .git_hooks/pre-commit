@@ -1,0 +1,17 @@
+#!/bin/bash
+# Wrapper to run all pre-commit scripts placed in pre_commit.d/
+# If the exit code of a script is not 0, the commit is stopped.
+
+script_directory=".githooks/pre_commit.d"
+for file in "$script_directory"/*
+do
+  ./"$file"
+  ret=$?
+  if [[ $ret != 0 ]]
+  then
+    echo "Pre-commit hook failed, file: '$file'"
+    exit 1
+  fi
+done
+
+exit 0
