@@ -1,6 +1,6 @@
 class Character:
 
-    # This class has no class docstring, which will cause pylint to raise a 
+    # This class has no class docstring, which will cause pylint to raise a
     # convention message, this can be disabled using the syntax below.
     # See link below for more information on message control.
     # https://pylint.pycqa.org/en/latest/user_guide/messages/message_control.html
@@ -8,7 +8,7 @@ class Character:
     # pylint: disable=missing-class-docstring
 
     _MIN_LEVEL = 1
-    _MAX_LEVEL = 100 
+    _MAX_LEVEL = 100
 
     _MIN_NAME_LENGTH = 1
     _MAX_NAME_LENGTH = 10
@@ -36,7 +36,7 @@ class Character:
     def set_name(self, new_name) -> bool:
 
         if len(new_name) < self._MIN_NAME_LENGTH or len(new_name) > self._MAX_NAME_LENGTH:
-            return False 
+            return False
 
         self.name = new_name
         return True
@@ -44,17 +44,21 @@ class Character:
 
 def main():
 
-    #Example of manually testing set_level() funcitonality
-    
+    # Example of manually testing set_level() functionality
+
     character = Character()
 
     character.set_level(-1)
-    print(f"set_level(-1), chracter.level: {character.level}")
-    # set_level(-1), chracter.level: 1
+    print(
+        f"set_level(-1), character.level: {character.level}")
+    # set_level(-1), character.level: 1
 
-    character.set_level(150)
-    print(f"set_level(150), chracter.level: {character.level}")
-    # set_level(150), chracter.level: 100
+    character.set_level(
+        150)
+    print(
+        f"set_level(150), character.level: {character.level}")
+    # set_level(150), character.level: 100
+
 
 if __name__ == "__main__":
     main()
