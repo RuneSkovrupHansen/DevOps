@@ -4,6 +4,12 @@
 files=$(git diff --name-only --cached)
 for file in $files
 do
+    # Skip deleted files
+    if [[ ! -f "$file" ]]
+    then
+        continue
+    fi
+
     # Skip non-py files.
     if [[ ! "$file" =~ \.py$ ]] 
     then
