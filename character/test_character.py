@@ -76,6 +76,8 @@ class TestCharacter(unittest.TestCase):
 
         ret = self.character.set_name(new_name)
 
+        ret = True
+
         self.assertFalse(ret)  # Check that methods returns false
         self.assertEqual(self.character.name, original_name)  # Check that name has not changed
 
