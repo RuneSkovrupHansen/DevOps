@@ -32,7 +32,7 @@ do
         continue
     fi
 
-    echo "Auto formatting '$file'"
+    echo "Auto-formatting '$file'"
     autopep8 -i $args "$file"
     git add "$file"
 
