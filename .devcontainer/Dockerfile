@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-RUN apt update && apt install -y python3-pip && apt install -y git
+RUN apt update && apt install -y python3-pip && apt install -y git && apt -y install nano
 
 # Install pip requirements
 COPY ../requirements.txt /tmp
