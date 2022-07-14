@@ -1,6 +1,7 @@
 #!/bin/python3
 import unittest
-from character import Character
+
+import character
 
 """In the current setup all tests are contained within a single
 test case, 'TestCharacter', however, it could be beneficial to
@@ -16,7 +17,7 @@ to be performed."""
 class TestCharacter(unittest.TestCase):
 
     def setUp(self):
-        self.character = Character()
+        self.character = character.Character()
 
     def tearDown(self):
         self.character = None
@@ -30,17 +31,17 @@ class TestCharacter(unittest.TestCase):
 
     def test_set_level_below_min(self):
 
-        new_level = Character._MIN_LEVEL - 10
+        new_level = character.Character._MIN_LEVEL - 10
         self.character.set_level(new_level)
 
-        self.assertEqual(self.character.level, Character._MIN_LEVEL)
+        self.assertEqual(self.character.level, character.Character._MIN_LEVEL)
 
     def test_set_level_above_max(self):
 
-        new_level = Character._MAX_LEVEL + 10
+        new_level = character.Character._MAX_LEVEL + 10
         self.character.set_level(new_level)
 
-        self.assertEqual(self.character.level, Character._MAX_LEVEL)
+        self.assertEqual(self.character.level, character.Character._MAX_LEVEL)
 
     def test_level_up_valid_test(self):
 
@@ -48,14 +49,14 @@ class TestCharacter(unittest.TestCase):
         for _ in range(no_level_ups):
             self.character.level_up()
 
-        self.assertEqual(self.character.level, Character._MIN_LEVEL + no_level_ups)
+        self.assertEqual(self.character.level, character.Character._MIN_LEVEL + no_level_ups)
 
     def test_level_up_above_max(self):
 
-        for _ in range(Character._MAX_LEVEL + 10):
+        for _ in range(character.Character._MAX_LEVEL + 10):
             self.character.level_up()
 
-        self.assertEqual(self.character.level, Character._MAX_LEVEL)
+        self.assertEqual(self.character.level, character.Character._MAX_LEVEL)
 
     def test_set_name_valid(self):
 

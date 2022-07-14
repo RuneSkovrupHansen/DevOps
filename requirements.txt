@@ -1,1 +1,6 @@
-numpy==1.23.0
+numpy
+
+# Sphinx
+sphinx
+sphinx-rtd-theme # Read the Docs theme
+sphinxcontrib-napoleon # Google docstring parsing
