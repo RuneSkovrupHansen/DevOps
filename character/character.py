@@ -8,10 +8,10 @@ class Character:
     # pylint: disable=missing-class-docstring
 
     """Character class.
-    
+
     Simple implementation of a character class with
     levels, name, and setter functions.
-    
+
     The class also contains a number of private
     constant members which define the limits for the
     setter methods.
@@ -34,18 +34,17 @@ class Character:
         self.level = self._MIN_LEVEL
 
     def set_level(self, new_level) -> None:
-
         """Set the character level.
 
         If new_level is below the minimum level it is
         set to the minimum level.
         If new_level is above the maximum level it is
         set to the maximum level.
-        
+
         Args:
             new_level (int): The level which the 
                 character should be set to.
-                
+
         Returns:
             None.
         """
@@ -60,11 +59,10 @@ class Character:
             self.level = new_level
 
     def level_up(self) -> None:
-
         """Level up the character.
-        
+
         Increments the characters level by one.
-        
+
         Returns:
             None.
         """
@@ -73,14 +71,13 @@ class Character:
             self.level += 1
 
     def set_name(self, new_name) -> bool:
-
         """Set the character name.
-        
+
         If the length of the name is below the minimum
         length, it is not set.
         If the length of the name is above the maximum
         length, it is not set.
-        
+
         Args:
             new_name (str): The new name.
 
@@ -102,14 +99,11 @@ def main():
     character = Character()
 
     character.set_level(-1)
-    print(
-        f"set_level(-1), character.level: {character.level}")
+    print(f"set_level(-1), character.level: {character.level}")
     # set_level(-1), character.level: 1
 
-    character.set_level(
-        150)
-    print(
-        f"set_level(150), character.level: {character.level}")
+    character.set_level(150)
+    print(f"set_level(150), character.level: {character.level}")
     # set_level(150), character.level: 100
 
 
