@@ -1,5 +1,6 @@
 #!/bin/python3
 import unittest
+import json
 
 import character
 
@@ -79,6 +80,71 @@ class TestCharacter(unittest.TestCase):
 
         self.assertFalse(ret)  # Check that methods returns false
         self.assertEqual(self.character.name, original_name)  # Check that name has not changed
+
+    def test_export_to_json(self):
+
+        # Valid values
+        name = "a" * (self.character._MAX_NAME_LENGTH)
+        level = self.character._MAX_LEVEL
+
+        self.character.set_name(name)
+        self.character.set_level(level)
+
+        ret, character_json = self.character.export_to_json()
+
+        self.assertTrue(ret)
+
+        json_dict = json.loads(character_json)
+
+        self.assertTrue("name" in json_dict)
+        self.assertEqual(json_dict.get("name"), name)
+
+        self.assertTrue("level" in json_dict)
+        self.assertEqual(json_dict.get("level"), level)
+
+    def test_export_to_json_invalid_name(self):
+
+        # Name is too long
+        name = "a" * (self.character._MAX_NAME_LENGTH+1)
+
+        self.character.set_name(name)
+        ret, character_json = self.character.export_to_json()
+
+        self.assertFalse(ret)
+        self.assertEqual(character_json, "")
+
+    def test_import_from_json(self):
+
+        name = "a" * (self.character._MAX_NAME_LENGTH)
+        level = self.character._MAX_LEVEL
+
+        character_dict = {
+            "name": name,
+            "level": level
+        }
+
+        self.character.import_from_json(json.dumps(character_dict))
+
+        self.assertEqual(self.character.name, name)
+        self.assertEqual(self.character.level, level)
+
+    def test_export_import(self):
+
+        name = "a" * (self.character._MAX_NAME_LENGTH)
+        level = self.character._MAX_LEVEL
+
+        self.character.set_name(name)
+        self.character.set_level(level)
+
+        _, character_json = self.character.export_to_json()
+
+        # Create new character and import
+        new_character = character.Character()
+        new_character.import_from_json(character_json)
+
+        # Check that name and level are equal
+        self.assertEqual(self.character.name, new_character.name)
+        self.assertEqual(self.character.level, new_character.level)
 
 
 if __name__ == "__main__":
