@@ -33,9 +33,15 @@ class Character:
     _MIN_NAME_LENGTH = 1
     _MAX_NAME_LENGTH = 10
 
-    def __init__(self) -> None:
+    def __init__(self, name=None, level=None) -> None:
         self.name = ""
         self.level = self._MIN_LEVEL
+
+        if name is not None:
+            self.set_name(name)
+
+        if level is not None:
+            self.set_level(level)
 
     def __repr__(self) -> str:
         return f"Character, {self.name = }, {self.level = }"
@@ -183,21 +189,6 @@ def main():
     character.set_level(150)
     print(f"set_level(150), character.level: {character.level}")
     # set_level(150), character.level: 100
-
-    character.set_name("Rune")
-
-    _, c_json = character.export_to_json()
-    print(c_json)
-    rune = Character()
-    rune.import_from_json(c_json)
-    print(rune)
-
-    name = "a" * (Character._MAX_NAME_LENGTH)
-    level = Character._MAX_LEVEL
-
-    character_json = f'"name": "{name}", "level": {level}'
-
-    rune.import_from_json(character_json)
 
 
 if __name__ == "__main__":

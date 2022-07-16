@@ -1,5 +1,11 @@
 numpy
 
+# Formatting
+autopep8
+
+# API
+flask_restful
+
 # Sphinx
 sphinx
 sphinx-rtd-theme # Read the Docs theme
