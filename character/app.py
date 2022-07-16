@@ -4,6 +4,9 @@ from flask_restful import Resource, Api, abort
 
 import character
 
+# Documentation on flask_restful
+# https://flask-restful.readthedocs.io/en/latest/index.html
+
 app = Flask(__name__)
 api = Api(app)
 
